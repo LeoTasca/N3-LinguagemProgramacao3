@@ -1,0 +1,31 @@
+extends layout
+block content
+  <br/>
+  <h2> !{title} </h2>
+  <br/>
+  <p>
+    <a href='/fetchdata' class='btn btn-primary' id='fetchdata' style='margin-right: 5px'> Load data</a>
+  <br/>
+  p#message.alert.alert-success(style='display:none')
+  <br/>
+    <form action="/create" method="post">
+      <div class="mb-3" style="margin-bottom: 10px;">
+        <label for="age" class="form-label">Age:</label>
+        <input type="number" class="form-control" id="age" name="age">
+      </div>
+      <div class="mb-3" style="margin-bottom: 10px;">
+        <label for="sex" class="form-label">Sex:</label>
+        <input type="number" class="form-control" id="sex" name="sex">
+      </div>
+      <div class="mb-3" style="margin-bottom: 10px;">
+        <label for="cp" class="form-label">Cp:</label>
+        <input type="number" class="form-control" id="cp" name="cp">
+      </div>
+      <div class="mb-3" style="margin-bottom: 10px;">
+        <label for="trestbps" class="form-label">Trestbps:</label>
+        <input type="number" class="form-control" id="trestbps" name="trestbps">
+      </div>
+      <div class="mb-3" style="margin-bottom: 10px;">
+      <button type="submit" class="btn btn-success">Adicionar</button>
+      </div>
+    </form>

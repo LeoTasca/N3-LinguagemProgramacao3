@@ -1,0 +1,32 @@
+extends layout
+block content
+  <br/>
+  <h2> !{title} </h2>
+  <br/>
+  <p>
+    <a href='/import' class='btn btn-primary' id='importdata' style='margin-right: 5px'> Import CSV</a>
+    <a href='/fetchdata' class='btn btn-primary' id='fetchdata' style='margin-right: 5px'> Load data</a>
+    <a href='/export' class='btn btn-primary' style='margin-right: 5px'> Export CSV</a>
+  <br/>
+  p#message.alert.alert-success(style='display:none')
+  <br/>
+  table.table.table-bordered
+    </thead>
+      <tr>
+        <th>Age</th>
+        <th>Sex</th>
+        <th>Cp</th>
+        <th>Trestbps</th>
+      </tr>
+    tbody#trdata
+      <tr>
+        td(colspan='4')
+          <strong> Importar CSV - </strong>
+          <span>para importar e salvar os dados no MongoDB.</span>
+          <br/>
+          <strong> Carregar Dados - </strong>
+          <span> para exibir os dados do banco de dados.</span>
+          <br/>
+          <strong> Exportar CSV - </strong>
+          <span>para exportar e salvar um arquivo CSV dos dados do MongoDB.</span>
+      </tr>
