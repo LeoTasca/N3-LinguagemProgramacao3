@@ -1,11 +1,11 @@
 <h1 align="center">N3 - Linguagem de Programação 3</h1>
 
 ## Descrição do Projeto
-<p align="Aplicação para importar e exportar uma base de dados em CSV para o banco de dados MongoDB e, posteriormente, realizar as operações de listagem, inserção e exclusão dos registros que foram importados ou que o usuário deseja manipular manualmente por meio de um formulário próprio. Base de dados usada: https://www.kaggle.com/dongeorge/beer-consumption-sao-paulo."></p>
+<p align="center">Aplicação para importar e exportar uma base de dados em CSV para o banco de dados MongoDB e, posteriormente, realizar as operações de listagem, inserção e exclusão dos registros que foram importados ou que o usuário deseja manipular manualmente por meio de um formulário próprio. Base de dados usada: https://www.kaggle.com/dongeorge/beer-consumption-sao-paulo.</p>
 
 <p align="center">
  <a href="#pré-requisitos">Pré-requisitos</a> •
- <a href="#comorodar">Como Rodar</a> • 
+ <a href="#como rodar">Como Rodar</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#licença">Licença</a> • 
  <a href="#autor">Autor</a>
