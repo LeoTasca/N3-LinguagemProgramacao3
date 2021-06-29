@@ -4,9 +4,9 @@ const csvexpress = require("csv-express");
 const router = express.Router();
 const fs = require("fs");
 const mongoose = require("mongoose");
-const HeartDisease = require("../models/HeartDisease");
+const BeerConsumptionSaoPaulo = require("../models/BeerConsumptionSaoPaulo");
 
-const csvfile = __dirname + "/../public/files/heartdisease.csv";
+const csvfile = __dirname + "/../public/files/beer-consumption-sao-paulo.csv";
 const stream = fs.createReadStream(csvfile);
 
 router.get("/", function (req, res, next) {
@@ -17,11 +17,11 @@ router.get("/import", function (req, res, next) {
   const csvStream = fastcsv
     .parse()
     .on("data", function (data) {
-      const item = new HeartDisease({
-        age: data[0],
-        sex: data[1],
-        cp: data[2],
-        trestbps: data[3],
+      const item = new BeerConsumptionSaoPaulo({
+        average_temperature: data[0],
+        precipitation: data[1],
+        weekend: data[2],
+        beer_consumption: data[3],
       });
       item.save(function (error) {
         console.log(item);
@@ -38,11 +38,11 @@ router.get("/import", function (req, res, next) {
 });
 
 router.get("/fetchdata", function (req, res, next) {
-  HeartDisease.find({}, function (err, data) {
+  BeerConsumptionSaoPaulo.find({}, function (err, data) {
     console.log(data);
     if (!err) {
       res.render("fetchdata", {
-        title: "Listing of people with heart disease",
+        title: "Listing the consumption of beer in Sao Paulo",
         data,
       });
     } else {
@@ -53,7 +53,7 @@ router.get("/fetchdata", function (req, res, next) {
 
 router.get("/export", function (req, res, next) {
   const filename = "exported_file.csv";
-  HeartDisease.find()
+  BeerConsumptionSaoPaulo.find()
     .lean()
     .exec({}, function (err, data) {
       if (err) res.send(err);
@@ -67,7 +67,7 @@ router.get("/export", function (req, res, next) {
 });
 
 router.get("/create-form", function (req, res, next) {
-  HeartDisease.find({}, function (err, data) {
+  BeerConsumptionSaoPaulo.find({}, function (err, data) {
     if (!err) {
       res.render("create", {
         title: "Create a new record",
@@ -79,11 +79,11 @@ router.get("/create-form", function (req, res, next) {
 });
 
 router.post("/create", function (req, res, next) {
-  const data = new HeartDisease({
-    age: req.body.age,
-    sex: req.body.sex,
-    cp: req.body.cp,
-    trestbps: req.body.trestbps,
+  const data = new BeerConsumptionSaoPaulo({
+    average_temperature: req.body.average_temperature,
+    precipitation: req.body.precipitation,
+    weekend: req.body.weekend,
+    beer_consumption: req.body.beer_consumption,
   });
 
   data.save(function (error) {
@@ -97,15 +97,15 @@ router.post("/create", function (req, res, next) {
 });
 
 router.get("/edit/:id", function (req, res, next) {
-  HeartDisease.find({ _id: req.params.id }, function (err, data) {
+  BeerConsumptionSaoPaulo.find({ _id: req.params.id }, function (err, data) {
     if (!err) {
       res.render("edit", {
         title: "Edit",
         _id: data[0]._id,
-        age: data[0].age,
-        sex: data[0].sex,
-        cp: data[0].cp,
-        trestbps: data[0].trestbps,
+        average_temperature: data[0].average_temperature,
+        precipitation: data[0].precipitation,
+        weekend: data[0].weekend,
+        beer_consumption: data[0].beer_consumption,
       });
     } else {
       throw err;
@@ -116,20 +116,20 @@ router.get("/edit/:id", function (req, res, next) {
 router.post("/edition/:id", function (req, res, next) {
   const filter = { _id: req.params.id };
   const update = {
-    age: req.body.age,
-    sex: req.body.sex,
-    cp: req.body.cp,
-    trestbps: req.body.trestbps,
+    average_temperature: req.body.average_temperature,
+    precipitation: req.body.precipitation,
+    weekend: req.body.weekend,
+    beer_consumption: req.body.beer_consumption,
   };
 
-  HeartDisease.updateOne(filter, update).then(() => {
+  BeerConsumptionSaoPaulo.updateOne(filter, update).then(() => {
     res.redirect("/fetchdata");
   });
 });
 
 router.get("/delete/:id", function (req, res, next) {
   const id = { _id: req.params.id };
-  HeartDisease.deleteOne(id).then(() => {
+  BeerConsumptionSaoPaulo.deleteOne(id).then(() => {
     res.redirect("/fetchdata");
   });
 });

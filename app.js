@@ -6,7 +6,7 @@ const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-
+require("dotenv").config();
 var session = require("express-session");
 
 const app = express();
@@ -41,11 +41,11 @@ app.use(express.static(path.join(__dirname, "public")));
 var flash = require("connect-flash");
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/db_heart_disease", {
+mongoose.connect("mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}${process.env.DB_HOST}/${process.env.DB}?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-require("./models/HeartDisease");
+require("./models/BeerConsumptionSaoPaulo");
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

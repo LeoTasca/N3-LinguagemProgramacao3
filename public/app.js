@@ -13,13 +13,13 @@ $(function () {
           "</td><td>" +
           data["_id"] +
           "</td><td>" +
-          data["age"] +
+          data["average_temperature"] +
           "</td><td>" +
-          data["sex"] +
+          data["precipitation"] +
           "</td><td>" +
-          data["cp"] +
+          data["weekend"] +
           "</td><td>" +
-          data["trestbps"] +
+          data["beer_consumption"] +
           "</td></tr>";
       });
       $("#trdata").html(string);

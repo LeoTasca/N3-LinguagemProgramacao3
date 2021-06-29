@@ -1,0 +1,32 @@
+extends layout
+block content
+  <br/>
+  <h2> !{title}</h2>
+  <br/>
+  <p>
+    <a href='/fetchdata' class='btn btn-primary' id='fetchdata' style='margin-right: 5px'> Load data</a>
+  <br/>
+  p#message.alert.alert-success(style='display:none')
+  <br/>
+    - var hrefEdit = '/edition/' + _id;
+    <form action=!{hrefEdit} method="post">
+      <div class="mb-3" style="margin-bottom: 10px;">
+        <label for="average_temperature" class="form-label">Average Temperature:</label>
+        <input type="number" class="form-control" id="average_temperature" name="average_temperature" value=!{average_temperature}>
+      </div>
+      <div class="mb-3" style="margin-bottom: 10px;">
+        <label for="precipitation" class="form-label">Precipitation:</label>
+        <input type="number" class="form-control" id="precipitation" name="precipitation" value=!{precipitation}>
+      </div>
+      <div class="mb-3" style="margin-bottom: 10px;">
+        <label for="weekend" class="form-label">Weekend:</label>
+        <input type="number" class="form-control" id="weekend" name="weekend" value=!{weekend}>
+      </div>
+      <div class="mb-3" style="margin-bottom: 10px;">
+        <label for="beer_consumption" class="form-label">Beer Consumption:</label>
+        <input type="number" class="form-control" id="beer_consumption" name="beer_consumption" value=!{beer_consumption}>
+      </div>
+      <div class="mb-3" style="margin-bottom: 10px;">
+      <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>

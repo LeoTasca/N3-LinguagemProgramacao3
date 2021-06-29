@@ -14,18 +14,18 @@ block content
   table.table.table-bordered
     </thead>
       <tr>
-        <th>Age</th>
-        <th>Sex</th>
-        <th>Cp</th>
-        <th>Trestbps</th>
+        <th>Average Temperature</th>
+        <th>Precipitation</th>
+        <th>Weekend</th>
+        <th>Beer Consumption</th>
       </tr>
     tbody#trdata
       each val, key in data
         <tr>
-          <th> !{val.age}</th>
-          <th> !{val.sex}</th>
-          <th> !{val.cp}</th>	
-          <th style='width: 250px'> !{val.trestbps}
+          <th> !{val.average_temperature}</th>
+          <th> !{val.precipitation}</th>
+          <th> !{val.weekend}</th>	
+          <th style='width: 250px'> !{val.beer_consumption}
           - var hrefEdit = '/edit/' + val._id;
           - var hrefDelete = '/delete/' + val._id;
           <a href=!{hrefEdit} class='btn btn-primary' id='importdata' style='margin: 0 10px; background-color: #008080'> Edit</a>
